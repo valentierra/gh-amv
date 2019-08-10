@@ -1,0 +1,143 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<header>
+    {{> "site-nav"}}
+</header>
+
+<section class="affliction-hero flex-align-center is-dark affliction-main-hero"
+         style="background-image: url({{ @site.cover_image}}); background-size: cover;">
+    <div class="dark-bckg"></div>
+    <div class="affliction-hero-body">
+        <div class="affliction-hero-logo">
+
+            <div class="affliction-container affliction-centered affliction-has-text-centered">
+                {{#if @site.logo}}
+                    <h1 class="affliction-main-h1">{{@site.title}}</h1>
+                    <img class="site-logo"
+                         srcset="{{img_url  @site.logo size="m"}} 300w,
+                                {{img_url @site.logo size="s"}} 600w,
+                                {{img_url @site.logo size="m"}} 1000w,
+                                {{img_url @site.logo size="m"}} 2000w"
+                         sizes="(max-width: 400px)"
+                         src="{{img_url @site.logo size="m"}}"
+                         alt="{{@site.title}}"
+                    />
+
+
+                {{else}}
+                    <h1 class="affliction-main-h1">{{@site.title}}</h1>
+                {{/if}}
+            </div>
+            <div class="affliction-hero-description affliction-has-text-centered">
+                {{@site.description}}
+            </div>
+        </div>
+
+    </div>
+    <div class="affliction-chevron-container">
+        <div class="affliction-chevron"></div>
+        <div class="affliction-chevron"></div>
+        <div class="affliction-chevron"></div>
+        <span class="text">Scroll down</span>
+    </div>
+</section>
+
+
+<main role="main" class="affliction-post-feed">
+    {{#foreach posts}}
+        <article class="{{post_class}} affliction-hero flex-align-stretch affliction-image-article"
+                 style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ img_url
+                         feature_image size="l" }}'); background-size: cover;">
+            <div class="dark-bckg"></div>
+
+            <a href="{{url}}">
+                <div class="affliction-hero-body">
+                    <div class="affliction-container">
+                        <div class="affliction-cols">
+                            <div class="affliction-col text-center">
+                                <h1>{{title}}</h1>
+                                <!-- Uncomment to activate post-date
+                                <small>
+                                    <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date
+                                            format="DD MMMM YYYY"}}</time>
+                                </small>
+                                -->
+                                <h2 class="affliction-subtitle">{{excerpt words="26"}} ...</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+    {{/foreach}}
+</main>
+
+<section id="statistic" class="statistic-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-xs-12 col-md-3">
+                    <div class="counter">
+                        <i class="fa fa-coffee fa-2x stats-icon"></i>
+                        <h2 class="timer count-title count-number">999</h2>
+                        <div class="stats-line-black"></div>
+                        <p class="stats-text">Coffee Cups</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="counter">
+                        <i class="fa fa-home fa-2x stats-icon"></i>
+                        <h2 class="timer count-title count-number">50</h2>
+                        <div class="stats-line-black"></div>
+                        <p class="stats-text">Projects</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="counter">
+                        <i class="fa fa-clock-o fa-2x stats-icon"></i>
+                        <h2 class="timer count-title count-number">10</p></h2>
+                        <div class="stats-line-black"></div>
+                        <p class="stats-text">Years Experience</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="counter">
+                        <i class="fa fa-street-view fa-2x stats-icon"></i>
+                        <h2 class="timer count-title count-number">30</p></h2>
+                        <div class="stats-line-black"></div>
+                        <p class="stats-text">Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js'></script>
+    <script src="./script.js"></script>
+</section>
+
+{{pagination}}
+
+<script>
+    $(document).ready(function () {
+        var vheight = $(window).height();
+        $('.affliction-chevron-container').click(function () {
+            $('html, body').animate({
+                scrollTop: (Math.floor($(window).scrollTop() / vheight)+1) * vheight
+            }, 500);
+        })
+    });
+
+    $(document).ready(function($) {
+    $('.count-number').counterUp({
+        delay: 10,
+        time: 1000
+        })
+    })
+</script>
+
+{{> "footer"}}

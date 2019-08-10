@@ -1,0 +1,52 @@
+{{!< default}}
+
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<header class="affliction-top-header-sticky">
+    {{> "site-nav"}}
+</header>
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+
+    {{#if feature_image}}
+        <section class="affliction-hero affliction-post-hero flex-align-center is-dark affliction-main-hero"
+                 style="background-image: url({{ feature_image}}); background-size: cover;">
+        </section>
+    {{/if}}
+
+    <main role="main" class="affliction-post-item">
+
+        <article class="affliction-post-article">
+            <h1>{{ title }}</h1>
+            <div class="affliction-post-tags">
+                {{#foreach tags }}
+                    <a href="{{url}}">{{name}}</a>
+                {{else}}
+                    {{!-- <p>There were no tags...</p> --}}
+                {{/foreach}}
+            </div>
+            <div class="affliction-main-article">
+                {{content}}
+            </div>
+        </article>
+
+    </main>
+
+    <section class="affliction-read-next ">
+        {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
+        {{#next_post}}
+            {{> "post-card"}}
+        {{/next_post}}
+
+        {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
+        {{#prev_post}}
+            {{> "post-card"}}
+        {{/prev_post}}
+
+    </section>
+
+{{/post}}
+
+{{> "footer"}}
