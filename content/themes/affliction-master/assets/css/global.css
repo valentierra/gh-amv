@@ -142,7 +142,7 @@ dfn {
 }
 h1 {
     margin: 0.67em 0;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 small {
     font-size: 80%;
@@ -384,7 +384,7 @@ h4, h5, h6 , p {
 
 h1.affliction-main-h1 {
     /*font-family: 'Lora', serif;*/
-    font-size: 88px;
+    font-size: 80px;
 }
 
 .affliction-image-article:hover .dark-bckg {
