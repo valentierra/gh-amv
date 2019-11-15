@@ -779,7 +779,7 @@ h1.affliction-main-h1 {
 .affliction-footer {
     background: black;
     color: white;
-    height: 80px;
+    height: 90px;
     line-height: 20px;
 }
 
@@ -823,7 +823,7 @@ h1.affliction-main-h1 {
 }
 
 .affliction-footer .site-nav-left, .site-footer-nav {
-    height: 80px;
+    height: 90px;
 }
 
 /*MEDIA QUERIES*/
